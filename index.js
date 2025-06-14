@@ -24,7 +24,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        await client.connect();
+        //await client.connect();
 
         const ProjectsCollection = client.db("ProjectsDB").collection("Projects")  //databasename change as needed
 
@@ -46,14 +46,16 @@ async function run() {
             res.send(projects);
         });
 
-
-
         //curd operation end
 
-        await client.db("admin").command({ ping: 1 });
+        //await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } catch (error) {
-        console.error("MongoDB connection error:", error);
+    }
+    // catch (error) {
+    //     console.error("MongoDB connection error:", error);
+    // }
+    finally {
+
     }
 }
 
@@ -65,7 +67,7 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('dot it server ready');
 });
 
 app.listen(port, () => {
